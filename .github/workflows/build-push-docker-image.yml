@@ -8,6 +8,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: build docker image
         run: |
+          cd action-a
           docker build -t seventyb/helloworld .
           docker save -o helloworld.tar seventyb/helloworld
       - name: scp docker image to my host
