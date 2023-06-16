@@ -10,7 +10,7 @@ jobs:
         run: |
           cd action-a
           docker build -t seventyb/helloworld .
-          docker save -o helloworld.tar seventyb/helloworld
+          docker save -o ../helloworld.tar seventyb/helloworld
       - name: scp docker image to my host
         uses: appleboy/scp-action@master
         with:
@@ -18,8 +18,8 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.REMOTE_KEY }}
           port: 22
-          source: action-a/helloworld.tar
-          target: /opt
+          source: helloworld.tar
+          target: /tmp
       - name: executing remote ssh commands
         uses: appleboy/ssh-action@master
         with:
@@ -28,8 +28,8 @@ jobs:
           key: ${{ secrets.REMOTE_KEY }}
           port: 22
           script: |
-            docker load -i /opt/helloworld.tar
-            rm /opt/helloworld.tar
+            docker load -i /tmp/helloworld.tar
+            rm /tmp/helloworld.tar
             #docker kill $(docker ps -q)
             docker run -d seventyb/helloworld:latest
             #docker system prune -f
