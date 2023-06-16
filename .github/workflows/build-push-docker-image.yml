@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.REMOTE_KEY }}
           port: 22
-          source: helloworld.tar
+          source: action-a/helloworld.tar
           target: /opt
       - name: executing remote ssh commands
         uses: appleboy/ssh-action@master
