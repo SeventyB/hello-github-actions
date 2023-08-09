@@ -22,7 +22,7 @@ jobs:
           docker build -t seventyb/helloworld .
           docker save -o ../helloworld.tar seventyb/helloworld
       - name: scp docker image to my host
-        if: github.event.pull_request.merged == 'true'
+        if: "github.event.pull_request.merged == true"
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
