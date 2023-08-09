@@ -2,7 +2,7 @@ name: A workflow for my Hello World file
 on:
   pull_request:
     types:
-      - edited
+      - ready_for_review
       - opened
 jobs:
   build:
