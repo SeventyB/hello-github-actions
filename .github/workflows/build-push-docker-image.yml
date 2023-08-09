@@ -1,8 +1,5 @@
 name: build and deploy helloworld container
 on:
-  push:
-    branches:
-      - dev
   pull_request:
     branches:
       - main
