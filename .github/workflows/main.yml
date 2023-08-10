@@ -2,11 +2,12 @@ name: A workflow for my Hello World file
 on:
   pull_request:
     types:
-      - ready_for_review
-      - opened
+      - labeled
+    
 jobs:
   build:
     name: Hello world action
+    if: github.event.label.name == 'build'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
