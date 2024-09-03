@@ -1,4 +1,4 @@
-name: A workflow for my Hello World file
+name: Workflow for main branch
 on:
   pull_request:
     types:
@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-    name: Hello world action
+    name: Main action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: ./action-a
         with:
-          MY_NAME: "Monamain"
+          MY_NAME: "main"
